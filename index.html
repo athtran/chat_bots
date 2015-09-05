@@ -30,6 +30,9 @@
         $('#m').val('');
         return false;
       })
+      socket.on('chat_message', function (message) {
+        $('#messages').append($('<li>').text(message));
+      });
     </script>
   </body>
 </html>
