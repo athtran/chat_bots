@@ -24,7 +24,7 @@
 
 
     <script>
-      $(document).ready(
+      $(document).ready(function () {
         var socket = io();
         $('#f').submit(function(event){
           socket.emit('chat_message', $('#m').val());
@@ -34,6 +34,7 @@
         socket.on('chat_message', function (message) {
           $('#messages').append($('<li>').text(message));
         });
+       }
       )
     </script>
   </body>
