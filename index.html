@@ -24,15 +24,17 @@
 
 
     <script>
-      var socket = io();
-      $('#f').submit(function(event){
-        socket.emit('chat_message', $('#m').val());
-        $('#m').val('');
-        return false;
-      })
-      socket.on('chat_message', function (message) {
-        $('#messages').append($('<li>').text(message));
-      });
+      $(document).ready(
+        var socket = io();
+        $('#f').submit(function(event){
+          socket.emit('chat_message', $('#m').val());
+          $('#m').val('');
+          return false;
+        })
+        socket.on('chat_message', function (message) {
+          $('#messages').append($('<li>').text(message));
+        });
+      )
     </script>
   </body>
 </html>
