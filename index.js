@@ -26,13 +26,14 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
   io.emit('chat_message', 'User #' + (++users) + ' has joined the server');
+  var username = "User " + users;
   var id = setInterval(function() {
-    broadcast_msg(words[Math.floor(Math.random()*words.length)]);
+    broadcast_msg(username, words[Math.floor(Math.random()*words.length)]);
   }, 5);
 
   console.log('a user has connected');
   socket.on('chat_message', function (message) {
-    broadcast_msg(message);
+    broadcast_msg(username, message);
   });
   socket.on('disconnect', function () {
     console.log('a user has disconnected');
@@ -43,12 +44,11 @@ server.listen(port, function(){
   console.log('listening on *:' + port);
 });
 
-function broadcast_msg(message) {
+function broadcast_msg(username, message) {
   if (blacklist[message]) {
     io.emit('chat_message', "***************FORBIDDEN WORD***************");
     console.log('FORBIDDEN WORD CAUGHT: ', message);
   } else {
-    var username = "User " + users;
     message = username + ": " + message;
     io.emit('chat_message', message);
   }
