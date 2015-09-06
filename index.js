@@ -20,7 +20,6 @@ io.on('connection', function(socket){
   console.log('a user has connected');
   socket.on('chat_message', function (message) {
     message = username + ": " + message;
-    messages.push(message);
     io.emit('chat_message', message);
   });
   socket.on('disconnect', function () {
