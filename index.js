@@ -3,7 +3,6 @@ var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var port = process.env.PORT || 3000;
 var users = 0;
-var messages = [];
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
@@ -11,7 +10,6 @@ app.get('/', function(req, res){
 
 io.on('connection', function(socket){
 
-  io.emit('old_messages', messages);
   io.emit('chat_message', 'User #' + (++users) + ' has joined the server');
   var username = "User " + users;
   //
