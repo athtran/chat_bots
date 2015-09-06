@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Socket.IO chat</title>
+    <title>Public chat</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
@@ -26,6 +26,7 @@
     <script>
       $(document).ready(function () {
         var socket = io();
+
         $('#f').submit(function(event){
           socket.emit('chat_message', $('#m').val());
           $('#m').val('');
