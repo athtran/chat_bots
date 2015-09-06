@@ -34,6 +34,10 @@
 
         socket.on('chat_message', function (message) {
           $('#messages').append($('<li>').text(message));
+          if ( $('#messages').children().length > 25 ) {
+            $('#messages').children().first().remove()
+          }
+          $(window).scrollTop($(document).height());
         });
        }
       )
