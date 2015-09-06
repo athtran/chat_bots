@@ -45,7 +45,7 @@ server.listen(port, function(){
 
 function broadcast_msg(message) {
   if (blacklist[message]) {
-    io.emit('chat_message', "FORBIDDEN WORD");
+    io.emit('chat_message', "***************FORBIDDEN WORD***************");
     console.log('FORBIDDEN WORD CAUGHT: ', message);
   } else {
     var username = "User " + users;
